@@ -17,6 +17,7 @@ char good_letters[6];//literele care apar in enter_word
 int index_good_letters = 0;
 char bad_letters[26];//literele care nu apar in enter_word
 int index_bad_letters = 0;
+char word_structure[6];//salveaza literele care sunt pe pozitiile bune
 
 
 //structura de stocare a literelor din fisier
@@ -211,7 +212,7 @@ void display_good_letters(){
     for(int i=0;i<index_good_letters;i++){
         printf("%c ",good_letters[i]);
     }
-    printf("\n");
+    printf("\n");o
 }
 
 void display_bad_letters(){
