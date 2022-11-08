@@ -212,7 +212,7 @@ void display_good_letters(){
     for(int i=0;i<index_good_letters;i++){
         printf("%c ",good_letters[i]);
     }
-    printf("\n");o
+    printf("\n");
 }
 
 void display_bad_letters(){
