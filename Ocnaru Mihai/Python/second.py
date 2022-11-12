@@ -48,7 +48,7 @@ def entropy(word):
             elif a == '⬜':
                 score += 0
 
-        probability = patterns[x] / len(words)
+        probability = patterns[x]/ len(words)
         entropy += probability*log2(probability)
 
     return -entropy
@@ -58,19 +58,22 @@ def find_best_word():
     max_entropy = 0
     for word in words:
         word_entropy = entropy(word)
-        if word_entropy > max_entropy:
+        if word_entropy > max_entropy and len(words)>1:
             max_entropy = word_entropy
+            previous = best_word
             best_word = word
-
+        elif len(words)==1:
+            best_word = list(words)[0]
 
 def check_letters():
     global words
+    
+    try:
+        words.remove(best_word)
+    except:
+        pass
     for i in range(5):
-        
         if best_word[i] == chosen_word[i]:
-            # for word in words:
-            #     if words[i] not == best_word[i]:
-            #         words.remove[word]
             words = {word for word in words if word[i] == best_word[i] }
         elif best_word[i] in chosen_word:
             words = {word for word in words if best_word[i] in word }
@@ -79,24 +82,52 @@ def check_letters():
     
 
 best_word = ''
+previous = ''
 max_entropy = 0
 
-# chosen_word = random.sample(words,1)[0]
-chosen_word = "ARCAT"
+chosen_word = random.sample(words,1)[0]
+# chosen_word = "IMENS"
 # chosen_word = "TAPUL"
 # chosen_word = "PILON"
+# chosen_word = "ERMIT"
 # before = time.time() 
 # find_best_word()
 # print(time.time()-before)
 # print(best_word,max_entropy)
 
 def solve():
-    # print(words)
+    global best_word,max_entropy,chosen_word
+    
     check_letters()
     find_best_word()
-    print(best_word,max_entropy)
+    # print(words)
+    # print(best_word,max_entropy)
 
-print('-------',chosen_word,'-------')
-best_word = "TAREI"
-for x in range(10):
-    solve()
+
+# best_word = "TAREI"
+# for x in range(10):
+#     solve()
+
+def tester(no_tests):
+    i = 0
+    global best_word,max_entropy,chosen_word,words,f
+    for j in range(no_tests):
+        f = open("cuvinte_wordle.txt",'r')
+        words = set(x.strip() for x in f)
+        
+        # print(words)
+        chosen_word = list(words)[int(random.random()*11000)]
+        # chosen_word = 'IMENS'
+        
+        print('-------',chosen_word,'-------')
+        best_word = "TAREI"
+        previous = "TAREI"
+        for x in range(10):
+            
+            solve()
+        if best_word == chosen_word:
+            i += 1
+    print("TESTE BUNE",i)
+
+tester(100)
+
