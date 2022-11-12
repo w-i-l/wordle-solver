@@ -9,21 +9,23 @@ clear = lambda: os.system('cls')
 
 
 words_count = 11454
+previous = ''
 
 ##green - g
 ##yellow - y
 ##gray - w
 
 f = open("cuvinte_wordle.txt","r")
-cuvinte = set(x.strip() for x in f)
+cuvinte = {x.strip() for x in f}
 
 # cuvant_ales = "OSPAT"
 
-def entropy(word):
+def entropy(word,test):
     modele = {}
 
     for cuv in cuvinte:
         model = ''
+        
         for i in range(5):
             if cuv[i] == word[i]:
                 model += '🟩'
@@ -38,14 +40,25 @@ def entropy(word):
             modele[model] = 1
         else:
             modele[model] += 1
-    
-    # for x,y in sorted(modele.items()):
-    #     print(x,y)
-    entropia = 0
+    if test:
+        if len(cuvinte) < 5:
+            for x,y in sorted(modele.items()):
+                print(x,y)
+    # entropia = 0
+    entropia = 1
 
     for x in modele:
-        probabilitatea = modele[x] / len(cuvinte)
-        entropia += probabilitatea*log2(probabilitatea)
+        score = -1
+        for a in x:
+            if a == '🟩':
+                score += 2
+            elif a == '🟨':
+                score += 1
+            elif a == '⬜':
+                score += 0
+        probabilitatea = modele[x] / len(cuvinte) 
+        entropia += probabilitatea*log2(probabilitatea)*score
+        # entropia *= probabilitatea*score
     
     return -entropia
 
@@ -53,27 +66,47 @@ max_entropy = 0
 best_word = ''
 
 before = time.time()
-def find_best_word():
-    global max_entropy,best_word
+def find_best_word(test):
+    global max_entropy,best_word,previous
     max_entropy = 0
-    best_word = ''
-    for x in cuvinte:
-        entropia = entropy(x)
+    # best_word = ''
+
+    copie = cuvinte.copy()
+
+    for x in copie:
+        entropia = entropy(x,test)
         # clear()
         # print(x,entropia)   
-        
-        if entropia >= max_entropy and not len(cuvinte) == 1:
+
+        if test:
+            print("TEST::::::::: ",x==best_word,'previous ',previous,'---','best_word',best_word)
+        if previous == best_word :
+            try:
+                cuvinte.remove(previous)
+                previous = best_word
+            except:
+                pass
+            # best_word =  x
+            # find_best_word()
+            
+            
+
+        if entropia > max_entropy and len(cuvinte)>1:
             max_entropy = entropia
+            previous = best_word
             best_word = x
         elif len(cuvinte) == 1:
             best_word =  list(cuvinte)[0]
             max_entropy = 0.0
 
+        
 
-def check_letters():
+
+def check_letters(test):
     global cuvinte
     for i in range(5):
-        # print(best_word,len(best_word))
+        if test:
+            print(best_word,len(best_word))
         if best_word[i] == cuvant_ales[i]:
             # copie = cuvinte.copy()
             # for x in copie:
@@ -93,19 +126,40 @@ def check_letters():
             #         cuvinte.remove(x)
             cuvinte = {cuv for cuv in cuvinte if not best_word[i] in cuv}
         
-# cuvant_ales = random.sample(cuvinte,1)[0]
-cuvant_ales = 'IURIE'
+cuvant_ales = random.sample(cuvinte,1)[0]
+# cuvant_ales = 'IURIE'
 # cuvant_ales = 'FOSIL'
+# cuvant_ales = "ORBIE"
+# cuvant_ales = "CARPA"
+# cuvant_ales = 'ALIAI' MAZUR
 best_word = 'TAREI'
-
-def solver():
-    check_letters()
-    find_best_word()
-    print(best_word,max_entropy)
+print(len(cuvinte))
+def solver(test):
+    check_letters(test)
+    find_best_word(test)
+    print('----------------------------------------------')
+    # print('----------------------------------------------')
+    print('BEST WORD: ',best_word,max_entropy)
+    # print('----------------------------------------------')
+    # print('----------------------------------------------')
     # print(cuvinte)
 
-print(cuvant_ales)
+print("Picked WORD: ",cuvant_ales)
 
-while not best_word == cuvant_ales:
-    solver()
+
+def tester():
+    for cuv in cuvinte:
+        best_word = "TAREI"
+        cuvant_ales = cuv
+        
+
+i=1
+while not best_word == cuvant_ales  and i<12:
+    solver(0)
+    i+=1
+
+print("GUESSES",i)
+
+# for x in range(10):
+#     solver()
 # print(entropy("TAREI"))
