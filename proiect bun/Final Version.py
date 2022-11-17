@@ -114,7 +114,7 @@ def entropy(word):
         score = 1
         for a in x:
             if a == '🟩':
-                score += 2
+                score = score*1.2 +1
             elif a == '🟨':
                 score += 1
             elif a == '⬜':
@@ -182,7 +182,7 @@ def solve():
     check_letters()
     find_best_word()
     # print(words)
-    print("**",best_word)
+    # print("**",best_word)
 
 def tester(no_tests):
     i = 0
@@ -197,8 +197,8 @@ def tester(no_tests):
         
         # print(words)
       
-        # chosen_word = words_to_try[j] #teste prestabilite
-        chosen_word = list(words)[int(random.random()*11454)] #teste random
+        chosen_word = words_to_try[j] #teste prestabilite
+        # chosen_word = list(words)[int(random.random()*11454)] #teste random
         
         print('-------',chosen_word,'-------')
  
@@ -216,7 +216,7 @@ def tester(no_tests):
     print("MEDIE INCERCARI ",incercari/(i if i>0 else i+1))
 
 before = time.time()
-tester(10)
+tester(1000)
 print(time.time()-before)
 
 
