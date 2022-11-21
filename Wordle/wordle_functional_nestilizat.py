@@ -4,8 +4,8 @@ from tkinter.ttk import *
 from tkinter import messagebox
 import random
 #from tkinter import colorchooser - trebuie sa vedem cu culorile
-from computer_plays import find_best_word
-
+from computer_plays import find_best_word, solve
+import asyncio
 
 #generare cuvant random
 f = open("cuvinte.txt", "r")
@@ -20,7 +20,7 @@ root.title("Wordle Game")
 root.geometry('800x800')
 
                     
-    
+
 
 
 
@@ -35,7 +35,7 @@ def pick_word():
 
 
 
-
+#preluare functie si cuvant ghicit de computer de la program2
 def get_computer_guess():
     global next_word
     next_word = find_best_word()
@@ -62,10 +62,8 @@ def get_computer_guess():
 
 
 
-def show_it():
-    Label(game, text = next_word)
 
-
+#jocu pe auto
 def instantiate_game():
     test2.destroy()
     global game
@@ -80,18 +78,17 @@ def instantiate_game():
 
 
 #aici trimit pattern-ul cuvantului catre un file pe care il acceseaza programul Radu-Mishu
-
 def color_word(guessed_word):
 
     pattern_list = [""] * 5
     k = 0
-    for letter in guessed_word:
-        if letter  == word_to_guess[k]:
+    for letter in word_to_guess:
+        if letter  == guessed_word[k]:
             pattern_list.append("verde")
-        elif letter in word_to_guess and letter != word_to_guess[k]:
+        elif letter in guessed_word and letter != guessed_word[k]:
             pattern_list.append("galben")
         else: pattern_list.append("gri") 
-
+        k+=1
     for el in pattern_list:
         out_to_computer.write(el)
         out_to_computer.write('\n')
@@ -99,11 +96,7 @@ def color_word(guessed_word):
 
 
 
-
-
-
-    
-#pauza
+#pauza - Lucreaza Tudor
 def instantiate_manual():
     root.destroy()
     test1 = tk.Tk()
@@ -121,6 +114,10 @@ def instantiate_manual():
     test1.title("Manual Mode")
     label1=Label(test1, text = 'Enter the word...', font= ('Times New Roman', 30))
     label1.pack()
+
+
+
+
     test1.mainloop()
 
     
