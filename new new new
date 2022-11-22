@@ -113,14 +113,6 @@ def output_joc(chosen_word):
 chosen_word = ''
 # chosen_word = "ORALA"
 
-def solve():
-    global chosen_word,best_word,max_entropy
-    check_letters()
-    find_best_word()
-    # print(best_word,output_joc(chosen_word))
-    
-    # print(words)
-
 response = ''
 
 def wait_for_response():
@@ -137,6 +129,18 @@ def wait_for_response():
         output_txt = open('output.txt','r+',encoding='utf-8')
     
     output_txt.close()
+
+def solve():
+    global chosen_word,best_word,max_entropy,response
+
+    wait_for_response()
+    check_letters()
+    find_best_word()
+    # print(best_word,output_joc(chosen_word))
+    
+    # print(words)
+
+
     
 
 best_word = "TAREI"
@@ -185,20 +189,20 @@ def tester(no_of_cases):
 # print(response)
 # tester(1)
 
-chosen_word = "STALP"
+chosen_word = "IROSI"
 print('=='+chosen_word)
 print("*TAREI")
-for x in range(3):
-    wait_for_response()
-    solve()
-    print(best_word)
-# print(output_joc(chosen_word))
-# before = time.time()
-# output_joc(chosen_word)
-# i=1
-# while not chosen_word == best_word:
+# for x in range(3):
+#     wait_for_response()
 #     solve()
-#     print("*"+best_word)
-#     i += 1
-# print("Incercari: ",i)
-# print(time.time()-before)
+#     print(best_word)
+# print(output_joc(chosen_word))
+before = time.time()
+# output_joc(chosen_word)
+i=1
+while not response == '🟩🟩🟩🟩🟩':
+    solve()
+    print("*"+best_word)
+    i += 1
+print("Incercari: ",i)
+print(time.time()-before)
