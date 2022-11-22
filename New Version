@@ -3,6 +3,7 @@ import time
 import random
 
 f = open("cuvinte_wordle.txt",'r')
+out_txt = open("out.txt",'a')
 # g = open("output.txt",'w',encoding='utf-8')
 words = [x.strip() for x in f]
 f = open("cuvinte_wordle.txt",'r')
@@ -108,10 +109,11 @@ def output_joc(chosen_word):
     # print(pattern)
     g.write(pattern)
 
-# chosen_word = words2[int(random.random()*11453)]
-chosen_word = "ORALA"
+chosen_word = ''
+# chosen_word = "ORALA"
 
 def solve():
+    global chosen_word,best_word,max_entropy
     check_letters()
     find_best_word()
     output_joc(chosen_word)
@@ -119,14 +121,54 @@ def solve():
 
 best_word = "TAREI"
 
-print('=='+chosen_word)
-print("*TAREI")
-before = time.time()
-output_joc(chosen_word)
-i=1
-while not chosen_word == best_word:
-    solve()
-    print("*"+best_word)
-    i += 1
-print("Incercari: ",i)
-print(time.time()-before)
+def tester(no_of_cases):
+    global chosen_word,best_word,max_entropy,words
+
+    before = time.time()
+
+    teste_ok = 0
+    nr_incercari = 0
+
+    for i in range(no_of_cases):
+        f.seek(0)
+        words = [x.strip() for x in f]
+        chosen_word = words2[i]
+        best_word = 'TAREI'
+        max_entropy = 0
+        print('*'+chosen_word)
+        out_txt.write('*'+chosen_word)
+        # print("*TAREI")
+        out_txt.write(" || TAREI")
+        
+        output_joc(chosen_word)
+        i=1
+        while not chosen_word == best_word:
+            solve()
+            # print("*"+best_word)
+            out_txt.write(" --> "+best_word)
+            i += 1
+        if chosen_word == best_word:
+            teste_ok += 1
+        nr_incercari += i
+        # print("Incercari: ",i)
+        
+        # print("------------------------------------")
+        out_txt.write("\n")
+    print("Incercari ok: ",teste_ok)
+    print("Incercari: ",nr_incercari/no_of_cases)
+    print((time.time()-before)//60,"min ",(time.time()-before)%60,'sec')
+
+
+tester(11453)
+
+# print('=='+chosen_word)
+# print("*TAREI")
+# before = time.time()
+# output_joc(chosen_word)
+# i=1
+# while not chosen_word == best_word:
+#     solve()
+#     print("*"+best_word)
+#     i += 1
+# print("Incercari: ",i)
+# print(time.time()-before)
