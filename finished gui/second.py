@@ -52,10 +52,8 @@ def find_best_word():
             best_word = words[0]
 
 
-def check_word(word):
-    f = open('output.txt',encoding='utf-8')
-
-    pattern = f.readline()
+def check_word(word,pattern):
+    
 
     if len(pattern) <5:
         return 0
@@ -79,10 +77,14 @@ def check_word(word):
 def check_letters():
     global words
 
+    f = open('output.txt',encoding='utf-8')
+
+    pattern = f.readline()
+
     copie = words.copy()
 
     for word in copie:
-        if check_word(word) == 0:
+        if check_word(word,pattern) == 0:
             words.remove(word)
     
 
