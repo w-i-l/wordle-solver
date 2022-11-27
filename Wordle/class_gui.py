@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter.ttk import *
 import random
 import time
-import second
+import class_bot
 from multiprocessing import Process
 
 class Gui:
@@ -148,7 +148,7 @@ class Gui:
                 "<Button-1>",
                 lambda self: [
                     root.destroy(),
-                    Process(target=second.auto).start(),
+                    Process(target=class_gui.auto).start(),
                     Process(target=Gui).start(),
                 ],
             )
