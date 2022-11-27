@@ -1,6 +1,6 @@
 # ASM-Project
 
-##How to install
+## How to install
 Try this
 
-##Then
+## Then
