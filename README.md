@@ -18,6 +18,7 @@
     interfata propriu zisa.
     Programele comunica printr-un fisier, guess-urile fiind validate prin pattern-ul de culori si trimise inapoi la 
     pentru un nou guess. 
+    Note - Pentru mac, culorile din modulul tkinter al python nu vor sa functioneze :) Pentru o experienta cat mai buna recomandam windows :)
 </p>
 
 
