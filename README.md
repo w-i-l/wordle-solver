@@ -11,7 +11,7 @@
 <h3>Scurta descriere</h3>
 
 <p>    Proiectul nostru este realizat in intregime in limbajul PYTHON. Am incercat o implementare
-    in C/C++ dar am relizat ca in python cu cateva optimizari putem sa ajungem la rezultatele dorite 
+    in C/C++ dar am realizat ca in python cu cateva optimizari putem sa ajungem la rezultatele dorite 
     mai repede.
         Avem programul principal, denumit #gui# care instantiaza atat interfata grafica pentru joc cat si 2 
     subprocese, unul pentru guess-urile programului care joaca wordle optim si cel de-al doilea pentru 
@@ -43,7 +43,7 @@
     cd ASM-Project
     cd Wordle
     python3 class_gui.py
-    end
+    
     ```
     
 </ol>
