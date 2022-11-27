@@ -47,7 +47,4 @@
     
 <li>Enjoy the visuals :)</li>
     
-   ![Uploading image.png…]()
-
-    
 </ol>
