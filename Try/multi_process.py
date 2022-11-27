@@ -125,12 +125,12 @@ def tester(no_of_cases):
     for i in range(no_of_cases[0],no_of_cases[1]):
         words = words2.copy()
         chosen_word = words2[i]
-        best_word = 'TAREI'
+        best_word = 'AURIE'
         max_entropy = 0
         # print('*'+chosen_word)    
         out_txt.write(chosen_word)
         # print("*TAREI")
-        out_txt.write(" TAREI")
+        out_txt.write(" AURIE")
 
         i=1
         while not chosen_word == best_word:
@@ -158,18 +158,18 @@ def tester(no_of_cases):
 
 
 
-#uncomment pt multiprocesare
-# if __name__ == '__main__':
+# uncomment pt multiprocesare
+if __name__ == '__main__':
 
-#     ranges = [(0,2863),(2863,5727),(5727,8590),(8590,11454)]
+    ranges = [(0,2863),(2863,5727),(5727,8590),(8590,11454)]
 
-#     p = Pool(4)
+    p = Pool(6)
 
-#     before = time.time()
+    before = time.time()
 
-#     p.map(tester,ranges)
+    p.map(tester,ranges)
 
-#     print((time.time()-before)//60,' min ',(time.time()-before)%60)
+    print((time.time()-before)//60,' min ',(time.time()-before)%60)
 
 
 #test pe un singur cuvant
@@ -198,4 +198,4 @@ def one_word():
     print(time.time()-before)
 
 #Apel pe un singur cuvant   
-one_word()
+# one_word()
