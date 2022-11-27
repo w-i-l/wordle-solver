@@ -2,10 +2,10 @@
 
 <p>La finalizarea acestui proiect au participat urmatorii:</p>
 <ul>
-    <li style = "list-style-type: circle;" ><Ocnaru Mihai Octavian, Grupa 131</li>
-    <li style = "list-style-type: circle;" >Caracas Radu Nicolae, Grupa 131</li>
-    <li style = "list-style-type: circle;" >Pistol Tudor, Grupa 131</li>
-    <li style = "list-style-type: circle;" >Iordache Andrei Tudor, Grupa 131</li>
+    <li style = "list-style-type: circle;" > <a href = "https://github.com/w-i-l">Ocnaru Mihai Octavian, grupa 131</a> </li>
+    <li style = "list-style-type: circle;" ><a href = "https://github.com/Raduc2003">Caracas Radu Nicolae, Grupa 131</a></li>
+    <li style = "list-style-type: circle;" ><a href = "https://github.com/calcuttarain">Pistol Tudor, Grupa 131</a></li>
+    <li style = "list-style-type: circle;" ><a href = "https://github.com/iordy">Iordache Andrei Tudor, Grupa 131</a></li>
 </ul>
 
 <h1>Scurta descriere</h1>
