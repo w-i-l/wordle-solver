@@ -148,7 +148,7 @@ class Gui:
                 "<Button-1>",
                 lambda self: [
                     root.destroy(),
-                    Process(target=class_gui.auto).start(),
+                    Process(target=class_bot.auto).start(),
                     Process(target=Gui).start(),
                 ],
             )
