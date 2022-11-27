@@ -163,7 +163,7 @@ if __name__ == "__main__":
     #Gui process
     gui = Process(target=Gui)
     #Bot process
-    bot = Process(target=second.auto)
+    bot = Process(target=class_bot.auto)
 
     gui.start()
     bot.start()
