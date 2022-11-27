@@ -10,6 +10,9 @@
 
 <h3>Scurta descriere</h3>
 
+<<<<<<< HEAD
+<h1 styles='color:red;'>GHGHG</h1>
+=======
 <p>    Proiectul nostru este realizat in intregime in limbajul PYTHON. Am incercat o implementare
     in C/C++ dar am realizat ca in python cu cateva optimizari putem sa ajungem la rezultatele dorite 
     mai repede.
@@ -38,12 +41,12 @@
     
     
     
-    ```
     git clone https://github.com/w-i-l/ASM-Project
     cd ASM-Project
     cd Wordle
     python3 class_gui.py
     
-    ```
     
 </ol>
+
+>>>>>>> 53494efa50b6f435e83d923ea93db0fd0320fa72
