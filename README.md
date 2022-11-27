@@ -1,4 +1,5 @@
 <h1>Wordle Game Project</h1>
+![image](https://user-images.githubusercontent.com/65015373/204142187-4c13fb51-cd96-4582-ab99-8f0957195e04.png)
 
 <p>La finalizarea acestui proiect au participat urmatorii:</p>
 <ul>
