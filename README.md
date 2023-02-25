@@ -40,7 +40,7 @@
     <li >Git clone la repositoriul de la adresa asta: <a>https://github.com/w-i-l/ASM-Project</a></li>
     <li>Se ruleaza in terminal comenzile de mai jos</li>
 
-        cd ASM-Project
+        cd wordle_solver
         cd Wordle
         python class_gui.py
         
